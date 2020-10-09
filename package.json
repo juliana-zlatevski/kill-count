@@ -1,7 +1,7 @@
 {
   "name": "kill-count-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Kill Count app is a visual representation of the Dead Meat YouTube channel's Kill Count series. Kill Count is a collection of horror movies and their victims, and is a simple look into scary movies and their victims.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,5 +17,10 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://git.generalassemb.ly/julianazlatevski/kill-count-app.git"
   }
 }
