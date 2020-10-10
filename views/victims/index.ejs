@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victims Index</title>
+</head>
+<body>
+    <h1>Victims Index</h1>
+
+    <ul class="victims">
+        <% for (let i = 0; i < victims.length; i++) { %> 
+        <li>
+            <a href="/victims/<%= victims[i]._id %>"><%= victims[i].name %></a>
+        </li>
+    <% } %> 
+    </ul>
+</body>
+</html>
