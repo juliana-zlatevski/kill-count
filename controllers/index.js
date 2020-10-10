@@ -1,5 +1,4 @@
-
-
 module.exports = {
-    movies: require('./moviesController')
+    movies: require('./moviesController'),
+    victims: require('./victimsController')
 }

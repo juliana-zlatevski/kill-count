@@ -20,10 +20,14 @@ app.use(methodOverride('_method'));
 
 // HOME ROUTE
 app.get('/', (req, res) => {
-    res.send('hi');
+    res.render('index');
 })
 
+// MOVIES ROUTES
 app.use('/movies', controller.movies);
+
+// VICTIMS ROUTES
+app.use('/victims', controller.victims);
 
 // LISTENER
 app.listen(PORT, ()=> console.log(`server connected on port: ${PORT}`));

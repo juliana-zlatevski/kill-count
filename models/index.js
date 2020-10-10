@@ -16,5 +16,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   });
 
   module.exports = {
-      Movie: require('./Movie')
+      Movie: require('./Movie'),
+      Victim: require('./Victim')
   }
