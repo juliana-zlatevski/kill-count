@@ -61,4 +61,18 @@ router.delete('/:victimId', (req, res) => {
     )
 })
 
+// edit route
+router.get('/:victimId/edit', (req, res) => {
+    db.Victim.findById(
+        req.params.victimId,
+        (err, foundVictim) => {
+            if (err) return console.log(err);
+            const context = {
+                victims: foundVictim
+            }
+            res.render('victims/edit', context);
+        }
+    )
+})
+
 module.exports = router;
