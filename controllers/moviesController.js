@@ -73,8 +73,16 @@ router.get('/:movieId/edit', (req, res) => {
 })
 
 // // update (post/put) route
-// router.put(':/movieId', (req, res) => {
-
-// })
+router.put('/:movieId', (req, res) => {
+    db.Movie.findByIdAndUpdate(
+        req.params.movieId,
+        req.body,
+        {new: true},
+        (err, updatedMovie) => {
+            if (err) return console.log(err);
+            res.redirect('/movies');
+        }
+    )
+})
 
 module.exports = router;
