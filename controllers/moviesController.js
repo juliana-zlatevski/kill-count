@@ -59,9 +59,18 @@ router.delete('/:movieId', (req, res) => {
 })
 
 // // edit route
-// router.get(':/movieId/edit', (req, res) => {
-
-// })
+router.get('/:movieId/edit', (req, res) => {
+    db.Movie.findById(
+        req.params.movieId,
+        (err, foundMovie) => {
+            if (err) return console.log(err);
+            const context = {
+                movies: foundMovie
+            }
+            res.render('movies/edit', context);
+        }
+    )
+})
 
 // // update (post/put) route
 // router.put(':/movieId', (req, res) => {

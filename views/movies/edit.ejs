@@ -6,6 +6,30 @@
     <title>Edit Movies</title>
 </head>
 <body>
-    <h1>Edit Movies</h1>
+    <h1>Make Changes to <%= movies.title %></h1>
+
+    <form action="/movies/<%= movies._id %>?_method=PUT" method="POST">
+        <div>
+            <label for="title">Movie Title: </label>
+            <input type="text" name="title" value="<%= movies.title %>"/>
+        </div>
+
+        <div>
+            <label for="year">Release Year: </label>
+            <input type="text" name="year" value="<%= movies.year %>"/>
+        </div>
+
+        <div>
+            <label for="director">Directed by: </label>
+            <input type="text" name="director" value="<%= movies.director %>"/>
+        </div>
+
+        <div>
+            <label for="kill_count">Kill Count: </label>
+            <input type="text" name="kill_count" value="<%= movies.kill_count %>"/>
+        </div>
+
+        <input type="submit" value="Submit Changes">
+    </form>
 </body>
 </html>
