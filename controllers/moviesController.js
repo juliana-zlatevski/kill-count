@@ -28,15 +28,23 @@ router.post('/', (req, res) => {
         const context = {
             movies: createdMovie
         }
-        console.log(createdMovie);
         res.redirect('/movies');
     })
 })
 
 // // show route
-// router.get(':/movieId', (req, res) => {
-    
-// })
+router.get('/:movieId', (req, res) => {
+    db.Movie.findById(
+        req.params.movieId,
+        (err, foundMovie) => {
+            if (err) return console.log(err);
+            const context = {
+                movies: foundMovie
+            }
+            res.render('movies/show', context);
+        }
+    )
+})
 
 // // delete route
 // router.delete(':/movieId', (req, res) => {
