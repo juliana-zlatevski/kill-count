@@ -7,7 +7,18 @@ const db = require('../models');
 // current path = 'victims'
 // index route
 router.get('/', (req, res) => {
-    res.send('hey this is the victims index page!');
+    db.Victim.find({}, (err, allVictims) => {
+        const context = {
+            victims: allVictims
+        }
+        res.render('victims/index', context);
+    })
 })
+
+// new route
+router.get('/new', (req, res) => {
+    res.render('victims/new');
+})
+
 
 module.exports = router;

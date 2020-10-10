@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Victim</title>
+</head>
+<body>
+    <h1>Add a New Victim</h1>
+
+    <form action="/victims" method="POST">
+        <div>
+            <label for="name">Character Name:</label>
+            <input type="text" name="name">
+        </div>
+
+        <div>
+            <label for="age">Age at Death:</label>
+            <input type="number" name="age">
+        </div>
+
+        <div>
+            <label for="cause_of_death">Cause of Death:</label>
+            <input type="text" name="cause_of_death">
+        </div>
+
+        <div>
+            <label for="dull_machete">Dull Machete Kill? :</label>
+            <input type="checkbox" name="dull_machete">
+        </div>
+
+        <div>
+            <label for="golden_chainsaw">Golden Chainsaw Kill? :</label>
+            <input type="checkbox" name="dull_machete">
+        </div>
+
+        <label>Which Movie Did This Character Die In?</label><br>
+             <select>
+               <option value = "1">Halloween</option>
+               <option value = "2">Halloween II</option>
+               <option value = "3">Halloween III</option>
+               <option value = "4">Halloween IV</option>
+               <option value = "5">Other</option>
+             </select><br>
+
+        <input type="submit" value="Add victim"/>
+    </form>
+</body>
+</html>
