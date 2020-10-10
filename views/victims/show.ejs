@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victim Details</title>
+</head>
+<body>
+    <h1><%= victims.name %></h1>
+
+    <p><b>Age of Death: </b><%= victims.age %></p>
+    <p><b>Cause of Death: </b><%= victims.cause_of_death %></p>
+    <p><b>Coolest Death?: </b>
+        <% if (victims.golden_chainsaw) { %> Yes! <% } else { %> Nah :/ <% } %> 
+        </p>
+    <p><b>Lamest Death?: </b>
+            <% if (victims.dull_machete) { %> Yes lol <% } else { %> Nope! <% } %> 
+            </p>
+
+
+    <form action="/victims/<%= victims._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete Victim">
+    </form>
+
+    <form action="/victims/<%= victims._id %>/edit" method="GET">
+        <input type="submit" value="Edit Victim Details">
+    </form>
+</body>
+</html>

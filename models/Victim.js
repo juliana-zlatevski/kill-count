@@ -9,7 +9,7 @@ const victimSchema = new mongoose.Schema({
         required: true
     },
     cause_of_death: {
-        type: Number,
+        type: String,
         required: true
     },
     dull_machete: Boolean,

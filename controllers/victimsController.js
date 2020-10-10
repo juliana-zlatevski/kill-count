@@ -20,5 +20,34 @@ router.get('/new', (req, res) => {
     res.render('victims/new');
 })
 
+// create + post route
+router.post('/', (req, res) => {
+    // converting dull_machete & golden_chainsaw into boolean values
+    req.body.golden_chainsaw = req.body.golden_chainsaw === 'on';
+    req.body.dull_machete = req.body.dull_machete === 'on';
+
+    db.Victim.create(req.body, (err, createdVictim) => {
+        if (err) return console.log(err);
+        const context = {
+            victims: createdVictim
+        }
+        console.log(createdVictim);
+        res.redirect('/victims');
+    })
+})
+
+// show route
+router.get('/:victimId', (req, res) => {
+    db.Victim.findById(
+        req.params.victimId,
+        (err, foundVictim) => {
+            if (err) return console.log(err);
+            const context = {
+                victims: foundVictim
+            }
+            res.render('victims/show', context);
+        }
+    )
+})
 
 module.exports = router;
