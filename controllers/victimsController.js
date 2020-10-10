@@ -75,4 +75,21 @@ router.get('/:victimId/edit', (req, res) => {
     )
 })
 
+// update (post/put) route
+router.put('/:victimId', (req, res) => {
+    // converting dull_machete & golden_chainsaw into boolean values
+    req.body.golden_chainsaw = req.body.golden_chainsaw === 'on';
+    req.body.dull_machete = req.body.dull_machete === 'on';
+
+    db.Victim.findByIdAndUpdate(
+        req.params.victimId,
+        req.body,
+        {new: true},
+        (err, updatedVictim) => {
+            if (err) return console.log(err);
+            res.redirect('/victims');
+        }
+    )
+})
+
 module.exports = router;
