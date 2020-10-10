@@ -50,4 +50,15 @@ router.get('/:victimId', (req, res) => {
     )
 })
 
+// delete route
+router.delete('/:victimId', (req, res) => {
+    db.Victim.findByIdAndDelete(
+        req.params.victimId,
+        (err, deletedVictim) => {
+            if (err) return console.log(err);
+            res.redirect('/victims');
+        }
+    )
+})
+
 module.exports = router;
