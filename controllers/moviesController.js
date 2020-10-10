@@ -47,9 +47,16 @@ router.get('/:movieId', (req, res) => {
 })
 
 // // delete route
-// router.delete(':/movieId', (req, res) => {
-
-// })
+router.delete('/:movieId', (req, res) => {
+    db.Movie.findByIdAndDelete(
+        req.params.movieId,
+        (err, deletedMovie) => {
+            console.log(deletedMovie);
+            if (err) return console.log(err);
+            res.redirect('/movies');
+        }
+    )
+})
 
 // // edit route
 // router.get(':/movieId/edit', (req, res) => {

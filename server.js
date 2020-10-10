@@ -1,6 +1,7 @@
 //  REQUIREMENTS
 const express = require('express');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const app = express();
 
 // DOTENV
@@ -15,6 +16,7 @@ const controller = require('./controllers');
 
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 
 // HOME ROUTE
 app.get('/', (req, res) => {
