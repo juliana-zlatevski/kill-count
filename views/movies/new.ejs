@@ -6,6 +6,30 @@
     <title>New Movie</title>
 </head>
 <body>
-    <h1>Add A New Movie</h1>
+    <h1>Add a New Movie</h1>
+
+    <form action="/movies" method="POST">
+        <div>
+            <label for="title">Movie Title:</label>
+            <input type="text" name="title">
+        </div>
+
+        <div>
+            <label for="year">Release Year:</label>
+            <input type="number" name="year">
+        </div>
+
+        <div>
+            <label for="director">Directed By:</label>
+            <input type="text" name="director">
+        </div>
+
+        <div>
+            <label for="kill_count">Kill Count:</label>
+            <input type="number" name="kill_count">
+        </div>
+
+        <input type="submit" value="Add movie"/>
+    </form>
 </body>
 </html>

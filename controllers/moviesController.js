@@ -7,7 +7,13 @@ const db = require('../models');
 // current path = '/movies'
 // index route
 router.get('/', (req, res) => {
-    res.render('movies/index');
+    db.Movie.find({}, (err, allMovies) => {
+        if (err) return console.log(err);
+        const context = {
+            movies: allMovies
+        }
+        res.render('movies/index', context);
+    })
 })
 
 // new route
@@ -16,9 +22,16 @@ router.get('/new', (req, res) => {
 })
 
 // // create + post route
-// router.post('/', (req, res) => {
-    
-// })
+router.post('/', (req, res) => {
+    db.Movie.create(req.body, (err, createdMovie) => {
+        if (err) return console.log(err);
+        const context = {
+            movies: createdMovie
+        }
+        console.log(createdMovie);
+        res.redirect('/movies');
+    })
+})
 
 // // show route
 // router.get(':/movieId', (req, res) => {
