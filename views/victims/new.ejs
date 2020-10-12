@@ -6,6 +6,9 @@
     <title>New Victim</title>
 </head>
 <body>
+
+    <%- include('../../partials/header') %> 
+
     <h1>Add a New Victim</h1>
 
     <form action="/victims" method="POST">
@@ -14,10 +17,11 @@
             <input type="text" name="name">
         </div>
 
-        <div>
+        <!-- change to time died in movie -->
+        <!-- <div>
             <label for="age">Age:</label>
             <input type="number" name="age">
-        </div>
+        </div> -->
 
         <div>
             <label for="cause_of_death">Cause of Death:</label>
@@ -34,14 +38,22 @@
             <input type="checkbox" name="dull_machete">
         </div>
 
-        <label>Which Movie Did This Character Die In?</label><br>
+        <!-- <label>Which Movie Did This Character Die In?</label><br>
              <select>
                <option value = "1">Halloween</option>
                <option value = "2">Halloween II</option>
                <option value = "3">Halloween III</option>
                <option value = "4">Halloween IV</option>
                <option value = "5">Other</option>
-             </select><br>
+             </select><br> -->
+
+
+        <select name="movie">
+            <% movies.forEach((movies) =>{ %>
+                <option value="<%= movies._id %>"><%= movies.title %></option>
+            <% }) %> 
+        </select>     
+
 
         <input type="submit" value="Add victim"/>
     </form>
