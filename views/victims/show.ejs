@@ -9,7 +9,7 @@
 
     <%- include('../../partials/header') %> 
 
-    <h1><%= victims.name %></h1>
+    <!-- <h1>< movies.title %></h1> -->
 
     <p><b>Age: </b><%= victims.age %></p>
     <p><b>Cause of Death: </b><%= victims.cause_of_death %></p>
@@ -19,6 +19,10 @@
     <p><b>Lamest Death?: </b>
             <% if (victims.dull_machete) { %> Yes lol <% } else { %> Nope! <% } %> 
             </p>
+
+       
+        <h2>movie </h2>
+        <a href="/movies/<%= movies._id %>"><%= movies.title %></a>
 
 
 

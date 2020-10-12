@@ -3,6 +3,7 @@ const router = express.Router();
 
 // importing DB
 const db = require('../models');
+const { find } = require('../models/Movie');
 
 // current path = 'victims'
 // index route
@@ -33,28 +34,59 @@ router.post('/', (req, res) => {
     req.body.dull_machete = req.body.dull_machete === 'on';
 
     db.Victim.create(req.body, (err, createdVictim) => {
-        if (err) return console.log(err);
-        const context = {
-            victims: createdVictim
+        if (err) return console.log(err)
+        else{
+            db.Movie.findById(req.body.movie, (err, findMovie) => {
+                // console.log('option A', req.body); //logs opbject (but says its null prototype)
+                // console.log("option B", req.body.movie); //logs ID #
+                if(err) return console.log(err);
+                console.log('hello?', findMovie);
+                findMovie.victims.push(createdVictim);
+                findMovie.save((err, saveMovie) => {
+                    if(err) return console.log(err);
+                    console.log(saveMovie)
+                    res.redirect('/victims')
+                })
+            })
         }
-        console.log(createdVictim);
-        res.redirect('/victims');
     })
 })
 
 // show route
+// router.get('/:victimId', (req, res) => {
+//     db.Victim.findById(req.params.victimId)
+//         .populate('movie')
+//         .exec((err, victimById) => {
+//             if (err) return console.log(err);
+
+//             console.log('victim by id', victimById);
+
+//             res.render('victims/show', victimById)
+//         });
+// });
+
 router.get('/:victimId', (req, res) => {
-    db.Victim.findById(
-        req.params.victimId,
-        (err, foundVictim) => {
-            if (err) return console.log(err);
-            const context = {
-                victims: foundVictim
-            }
-            res.render('victims/show', context);
+    db.Movie.findOne({'victims': req.params.id})
+    .populate(
+        {
+            path:'victims',
+            match: {_id: req.params.id}
+        })
+    .exec((err, foundMovie) => {
+        if (err) return console.log(err);
+
+        console.log(foundMovie, 'this was found');
+        if(err) {
+            res.send(err);
+        } else {
+            res.render('victims/show',  {
+                movies: foundMovie,
+                victims: foundMovie.victims
+            });
         }
-    )
-})
+    })
+});
+
 
 // delete route
 router.delete('/:victimId', (req, res) => {
