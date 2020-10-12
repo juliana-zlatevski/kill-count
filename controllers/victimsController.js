@@ -52,26 +52,12 @@ router.get('/:victimId', (req, res) => {
         .populate('victims')
         .exec((err, foundMovie) => {
             if (err) return console.log(err);
-            console.log('FOUND MOVIE!!!!!!!' + foundMovie);
             res.render('victims/show', {
                 movies: foundMovie,
                 victims: foundMovie.victims[0]
             })
         })
 })
-
-// router.get('/:victimId', (req, res) => {
-//     db.Victim.findById(
-//         req.params.victimId,
-//         (err, foundVictim) => {
-//             if (err) return console.log(err);
-//             const context = {
-//                 victims: foundVictim
-//             }
-//             res.render('victims/show', context);
-//         }
-//     )
-// })
 
 // delete route
 router.delete('/:victimId', (req, res) => {
