@@ -12,10 +12,10 @@ const victimSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // movie: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Movie'
-    // }],
+    movie: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Movie'
+    }],
     dull_machete: Boolean,
     golden_chainsaw: Boolean
 }, {timestamps: true})

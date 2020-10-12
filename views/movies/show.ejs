@@ -6,6 +6,9 @@
     <title>Movie Details</title>
 </head>
 <body>
+
+    <%- include('../partials/header') %> 
+
     <h1><%= movies.title %> Movie Info</h1>
 
     <p><b>Release Year: </b><%= movies.year %></p>
@@ -13,11 +16,11 @@
     <p><b>Kill Count: </b><%= movies.kill_count %></p>
     <ul>
         <% movies.victims.forEach((victims) => { %>
-            <a href="/victims/<%= victims._id %>">
-                <li><%= victims.name %></li>
-            </a>
+            <a href="/movies/<%= victims._id %>"><li><%= victims.name %></li></a>
        <% }) %>
     </ul>
+
+
 
     <form action="/movies/<%= movies._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete Movie">

@@ -6,6 +6,9 @@
     <title>Victim Details</title>
 </head>
 <body>
+
+    <%- include('../partials/header') %> 
+
     <h1><%= victims.name %></h1>
 
     <p><b>Age: </b><%= victims.age %></p>
@@ -16,6 +19,7 @@
     <p><b>Lamest Death?: </b>
             <% if (victims.dull_machete) { %> Yes lol <% } else { %> Nope! <% } %> 
             </p>
+
 
 
     <form action="/victims/<%= victims._id %>?_method=DELETE" method="POST">

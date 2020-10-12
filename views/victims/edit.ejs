@@ -6,6 +6,9 @@
     <title>Edit Victims</title>
 </head>
 <body>
+
+    <%- include('../partials/header') %> 
+
     <h1>Make Changes to <%= victims.name %></h1>
 
     <form action="/victims/<%= victims._id %>?_method=PUT" method="POST">
