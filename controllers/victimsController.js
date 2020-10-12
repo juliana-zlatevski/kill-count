@@ -22,6 +22,7 @@ router.get('/new', (req, res) => {
 
         const context = {movies: allMovies};
         res.render('victims/new', context)
+        console.log(req.body);
     });
 });
 
