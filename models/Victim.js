@@ -4,14 +4,18 @@ const victimSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    age: {
-        type: Number,
-        required: true
-    },
+    // time_killed: {
+    //     type: String,
+    //     required: true
+    // },
     cause_of_death: {
         type: String,
         required: true
     },
+    // movie: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Movie'
+    // }],
     dull_machete: Boolean,
     golden_chainsaw: Boolean
 }, {timestamps: true})

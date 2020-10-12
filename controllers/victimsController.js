@@ -17,8 +17,13 @@ router.get('/', (req, res) => {
 
 // new route
 router.get('/new', (req, res) => {
-    res.render('victims/new');
-})
+    db.Movie.find({}, (err, allMovies) => {
+        if (err) {console.log(err);}
+
+        const context = {movies: allMovies};
+        res.render('victims/new', context)
+    });
+});
 
 // create + post route
 router.post('/', (req, res) => {
