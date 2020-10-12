@@ -17,6 +17,8 @@
             <% if (victims.dull_machete) { %> Yes lol <% } else { %> Nope! <% } %> 
             </p>
 
+    <p><%= victims.name %> died in <%= movies.title %></p>
+
 
     <form action="/victims/<%= victims._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete Victim">

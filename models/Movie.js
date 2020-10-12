@@ -9,7 +9,11 @@ const movieSchema = new mongoose.Schema({
         required: true
     },
     director: String,
-    kill_count: Number
+    kill_count: Number,
+    victims: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Victim'
+    }]
 }, {timestamps: true})
 
 const Movie = mongoose.model('Movie', movieSchema);

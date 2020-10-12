@@ -1,8 +1,10 @@
 const express = require('express');
+const { Movie } = require('../models');
 const router = express.Router();
 
 // importing DB
 const db = require('../models');
+
 
 // current path = 'victims'
 // index route
@@ -17,7 +19,12 @@ router.get('/', (req, res) => {
 
 // new route
 router.get('/new', (req, res) => {
-    res.render('victims/new');
+    db.Movie.find({}, (err, allMovies) => {
+        if (err) return console.log(err);
+        res.render('victims/new', {
+            movies: allMovies
+        })
+    })
 })
 
 // create + post route
@@ -28,27 +35,43 @@ router.post('/', (req, res) => {
 
     db.Victim.create(req.body, (err, createdVictim) => {
         if (err) return console.log(err);
-        const context = {
-            victims: createdVictim
-        }
-        console.log(createdVictim);
-        res.redirect('/victims');
+        db.Movie.findById(req.body.movieId, (err, foundMovie) => {
+            if (err) return console.log(err);
+            foundMovie.victims.push(createdVictim);
+            foundMovie.save((err, savedMovie) => {
+                console.log('saved movie' + savedMovie);
+                res.redirect('/victims');
+            })
+        })
     })
 })
 
 // show route
 router.get('/:victimId', (req, res) => {
-    db.Victim.findById(
-        req.params.victimId,
-        (err, foundVictim) => {
+    db.Movie.findOne({'victims': req.params.victimId})
+        .populate('victims')
+        .exec((err, foundMovie) => {
             if (err) return console.log(err);
-            const context = {
-                victims: foundVictim
-            }
-            res.render('victims/show', context);
-        }
-    )
+            console.log('FOUND MOVIE!!!!!!!' + foundMovie);
+            res.render('victims/show', {
+                movies: foundMovie,
+                victims: foundMovie.victims[0]
+            })
+        })
 })
+
+// router.get('/:victimId', (req, res) => {
+//     db.Victim.findById(
+//         req.params.victimId,
+//         (err, foundVictim) => {
+//             if (err) return console.log(err);
+//             const context = {
+//                 victims: foundVictim
+//             }
+//             res.render('victims/show', context);
+//         }
+//     )
+// })
 
 // delete route
 router.delete('/:victimId', (req, res) => {

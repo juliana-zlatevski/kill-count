@@ -35,15 +35,14 @@
         </div>
 
         <label>Which Movie Did This Character Die In?</label><br>
-             <select>
-               <option value = "1">Halloween</option>
-               <option value = "2">Halloween II</option>
-               <option value = "3">Halloween III</option>
-               <option value = "4">Halloween IV</option>
-               <option value = "5">Other</option>
-             </select><br>
 
-        <input type="submit" value="Add victim"/>
+        <select name="movieId">
+            <% for(let i = 0; i < movies.length; i++) { %>
+                <option value="<%=movies[i]._id%>"><%=movies[i].title%></option>
+            <% } %>
+        </select><br/>
+        <input type="submit" value="Add Victim"/>
+
     </form>
 </body>
 </html>
