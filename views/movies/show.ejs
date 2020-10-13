@@ -12,6 +12,13 @@
     <p><b>Release Year: </b><%= movies.year %></p>
     <p><b>Directed by: </b><%= movies.director %></p>
     <p><b>Kill Count: </b><%= movies.kill_count %></p>
+    <ul>
+        <% movies.victims.forEach((victims) => { %>
+            <a href="/movies/<%= victims._id %>"><li><%= victims.name %></li></a>
+       <% }) %>
+    </ul>
+
+
 
     <h3>Victim List:</h3>
     <ol>

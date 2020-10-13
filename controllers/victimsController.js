@@ -4,6 +4,7 @@ const router = express.Router();
 
 // importing DB
 const db = require('../models');
+const { find } = require('../models/Movie');
 
 
 // current path = 'victims'
@@ -47,6 +48,18 @@ router.post('/', (req, res) => {
 })
 
 // show route
+// router.get('/:victimId', (req, res) => {
+//     db.Victim.findById(req.params.victimId)
+//         .populate('movie')
+//         .exec((err, victimById) => {
+//             if (err) return console.log(err);
+
+//             console.log('victim by id', victimById);
+
+//             res.render('victims/show', victimById)
+//         });
+// });
+
 router.get('/:victimId', (req, res) => {
     db.Movie.findOne({'victims': req.params.victimId})
         .populate('victims')

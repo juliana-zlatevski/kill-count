@@ -7,6 +7,7 @@
 </head>
 <body>
     <%- include('../../partials/header') %> 
+
     <h1>Add a New Victim</h1>
 
     <form action="/victims" method="POST">
@@ -15,10 +16,11 @@
             <input type="text" name="name">
         </div>
 
-        <div>
+        <!-- change to time died in movie -->
+        <!-- <div>
             <label for="age">Age:</label>
             <input type="number" name="age">
-        </div>
+        </div> -->
 
         <div>
             <label for="cause_of_death">Cause of Death:</label>
@@ -34,7 +36,6 @@
             <label for="golden_chainsaw">Golden Chainsaw Kill? :</label>
             <input type="checkbox" name="dull_machete">
         </div>
-
         <label>Which Movie Did This Character Die In?</label><br>
 
         <select name="movieId">
@@ -43,7 +44,6 @@
             <% } %>
         </select><br/>
         <input type="submit" value="Add Victim"/>
-
     </form>
 </body>
 </html>
