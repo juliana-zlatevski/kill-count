@@ -17,6 +17,8 @@ const controller = require('./controllers');
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
+// BOOTSTRAP
+app.use(express.static(`${__dirname}/public`));
 
 // HOME ROUTE
 app.get('/', (req, res) => {
