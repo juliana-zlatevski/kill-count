@@ -6,13 +6,11 @@
     <title>Victim Details</title>
 </head>
 <body>
-
     <%- include('../../partials/header') %> 
+    <h1><%= movies.victims[0].name %></h1>
 
-    <!-- <h1>< movies.title %></h1> -->
-
-    <p><b>Age: </b><%= victims.age %></p>
-    <p><b>Cause of Death: </b><%= victims.cause_of_death %></p>
+    <p><b>Age: </b><%= movies.victims[0].age %></p>
+    <p><b>Cause of Death: </b><%= movies.victims[0].cause_of_death %></p>
     <p><b>Coolest Death?: </b>
         <% if (victims.golden_chainsaw) { %> Yes! <% } else { %> Nah :/ <% } %> 
         </p>
@@ -20,10 +18,7 @@
             <% if (victims.dull_machete) { %> Yes lol <% } else { %> Nope! <% } %> 
             </p>
 
-       
-        <h2>movie </h2>
-        <a href="/movies/<%= movies._id %>"><%= movies.title %></a>
-
+    <p><%= movies.victims[0].name %> died in <a href="/movies/<%=movies._id %>"><%= movies.title %></a></p>
 
 
     <form action="/victims/<%= victims._id %>?_method=DELETE" method="POST">

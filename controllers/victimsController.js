@@ -1,9 +1,11 @@
 const express = require('express');
+const { Movie } = require('../models');
 const router = express.Router();
 
 // importing DB
 const db = require('../models');
 const { find } = require('../models/Movie');
+
 
 // current path = 'victims'
 // index route
@@ -19,13 +21,12 @@ router.get('/', (req, res) => {
 // new route
 router.get('/new', (req, res) => {
     db.Movie.find({}, (err, allMovies) => {
-        if (err) {console.log(err);}
-
-        const context = {movies: allMovies};
-        res.render('victims/new', context)
-        console.log(req.body);
-    });
-});
+        if (err) return console.log(err);
+        res.render('victims/new', {
+            movies: allMovies
+        })
+    })
+})
 
 // create + post route
 router.post('/', (req, res) => {
@@ -34,21 +35,15 @@ router.post('/', (req, res) => {
     req.body.dull_machete = req.body.dull_machete === 'on';
 
     db.Victim.create(req.body, (err, createdVictim) => {
-        if (err) return console.log(err)
-        else{
-            db.Movie.findById(req.body.movie, (err, findMovie) => {
-                // console.log('option A', req.body); //logs opbject (but says its null prototype)
-                // console.log("option B", req.body.movie); //logs ID #
-                if(err) return console.log(err);
-                console.log('hello?', findMovie);
-                findMovie.victims.push(createdVictim);
-                findMovie.save((err, saveMovie) => {
-                    if(err) return console.log(err);
-                    console.log(saveMovie)
-                    res.redirect('/victims')
-                })
+        if (err) return console.log(err);
+        db.Movie.findById(req.body.movieId, (err, foundMovie) => {
+            if (err) return console.log(err);
+            foundMovie.victims.push(createdVictim);
+            foundMovie.save((err, savedMovie) => {
+                console.log('saved movie' + savedMovie);
+                res.redirect('/victims');
             })
-        }
+        })
     })
 })
 
@@ -66,27 +61,16 @@ router.post('/', (req, res) => {
 // });
 
 router.get('/:victimId', (req, res) => {
-    db.Movie.findOne({'victims': req.params.id})
-    .populate(
-        {
-            path:'victims',
-            match: {_id: req.params.id}
-        })
-    .exec((err, foundMovie) => {
-        if (err) return console.log(err);
-
-        console.log(foundMovie, 'this was found');
-        if(err) {
-            res.send(err);
-        } else {
-            res.render('victims/show',  {
+    db.Movie.findOne({'victims': req.params.victimId})
+        .populate('victims')
+        .exec((err, foundMovie) => {
+            if (err) return console.log(err);
+            res.render('victims/show', {
                 movies: foundMovie,
-                victims: foundMovie.victims
-            });
-        }
-    })
-});
-
+                victims: foundMovie.victims[0] //this is what is causing problems -- always only referencing the very first victim in the array.
+            })
+        })
+})
 
 // delete route
 router.delete('/:victimId', (req, res) => {

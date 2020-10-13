@@ -17,7 +17,11 @@ const victimSchema = new mongoose.Schema({
         ref: 'Movie'
     },
     dull_machete: Boolean,
-    golden_chainsaw: Boolean
+    golden_chainsaw: Boolean,
+    movie: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Movie'
+    }
 }, {timestamps: true})
 
 const Victim = mongoose.model('Victim', victimSchema);
