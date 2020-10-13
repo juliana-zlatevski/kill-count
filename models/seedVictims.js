@@ -169,4 +169,3 @@ victims = [
     },
 ]
 
-module.exports = victims;

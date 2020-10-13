@@ -4,6 +4,7 @@ const router = express.Router();
 
 // importing DB
 const db = require('../models');
+const { find } = require('../models/Movie');
 
 
 // current path = 'victims'
@@ -45,7 +46,7 @@ router.post('/', (req, res) => {
     })
 })
 
-// show route
+// SHOW ROUTE
 router.get('/:victimId', (req, res) => {
     db.Victim.findById(req.params.victimId, (err, foundVictim) => {
         if (err) return console.log(err);
