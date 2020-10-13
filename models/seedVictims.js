@@ -1,34 +1,7 @@
-// hard coded data
-
-movies = [{
-    title: 'Jaws',
-    year: 1975,
-    director: 'Stephen Spielberg',
-    kills: 6
-},
-{
-    title: 'Alien',
-    year: 1979,
-    director: 'Ridley Scott',
-    kills: 6
-},
-{
-    title: 'Nightmare on Elm Street',
-    year: 1975,
-    director: 'Roberrt Shaye',
-    kills: 4
-},
-{
-    title: 'Halloween',
-    year: 1978,
-    director: 'John Carpenter',
-    kills: 5
-},]
-
 victims = [
     {
         name: "Judith Meyers",
-        age: ,
+        age: 16,
         cause_of_death: "Stabbed 9x with Butcher knife",
         movie: "Halloween",
         golden_chainsaw: false,
@@ -36,7 +9,7 @@ victims = [
     },
     {
         name: 'Mechanic dude',
-        age: ,
+        age: 52,
         cause_of_death: "Body seen in grass",
         movie: "Halloween",
         golden_chainsaw: false,
@@ -44,7 +17,7 @@ victims = [
     },
     {
         name: "Annie Brackett",
-        age: ,
+        age: 19,
         cause_of_death: "Strangled and throat slit",
         movie: "Halloween",
         golden_chainsaw: false,
@@ -52,7 +25,7 @@ victims = [
     },
     {
         name: "Bob Simms",
-        age: ,
+        age: 58,
         cause_of_death: "Stabbed through chest",
         movie: "Halloween",
         golden_chainsaw: true,
@@ -60,7 +33,7 @@ victims = [
     },
     {
         name: "Lynda",
-        age: ,
+        age: 20,
         cause_of_death: "Strangled by phone cord",
         movie: "Halloween",
         golden_chainsaw: false,
@@ -68,7 +41,7 @@ victims = [
     },
     {
         name: "Kane",
-        age: ,
+        age: 20,
         cause_of_death: "Chest bursted by alien",
         movie: "Alien",
         golden_chainsaw: true,
@@ -76,7 +49,7 @@ victims = [
     },
     {
         name: "Brett",
-        age: ,
+        age: 20,
         cause_of_death: "Impaled through head with second mouth",
         movie: "Alien",
         golden_chainsaw: false,
@@ -84,7 +57,7 @@ victims = [
     },
     {
         name: "Dallas",
-        age: ,
+        age: 20,
         cause_of_death: "Killed offscreen",
         movie: "Alien",
         golden_chainsaw: false,
@@ -92,7 +65,7 @@ victims = [
     },
     {
         name: "Ash (Android)",
-        age: ,
+        age: 20,
         cause_of_death: "Decapitated and dismantled",
         movie: "Alien",
         golden_chainsaw: false,
@@ -100,7 +73,7 @@ victims = [
     },
     {
         name: "Parker",
-        age: ,
+        age: 20,
         cause_of_death: "Impaled by alien's second mouth",
         movie: "Alien",
         golden_chainsaw: false,
@@ -108,7 +81,7 @@ victims = [
     },
     {
         name: "Lambert",
-        age: ,
+        age: 20,
         cause_of_death: "Killed offscreen",
         movie: "Alien",
         golden_chainsaw: false,
@@ -116,7 +89,7 @@ victims = [
     },
     {
         name: "Tina Grey",
-        age: ,
+        age: 20,
         cause_of_death: "Finger knifed in the chest",
         movie: "The Nightmare on Elm Street",
         golden_chainsaw: false,
@@ -124,7 +97,7 @@ victims = [
     },
     {
         name: "Rod Lane",
-        age: ,
+        age: 20,
         cause_of_death: "Hanged in jail cell",
         movie: "The Nightmare on Elm Street",
         golden_chainsaw: false,
@@ -132,7 +105,7 @@ victims = [
     },
     {
         name: "Glen Lantz",
-        age: ,
+        age: 20,
         cause_of_death: "Pulled into bed and turned into blood geyser",
         movie: "The Nightmare on Elm Street",
         golden_chainsaw: true,
@@ -140,7 +113,7 @@ victims = [
     },
     {
         name: "Marge Thompson",
-        age: ,
+        age: 20,
         cause_of_death: "Burned to death",
         movie: "The Nightmare on Elm Street",
         golden_chainsaw: false,
@@ -148,7 +121,7 @@ victims = [
     },
     {
         name: "Chrissie Watkins",
-        age: ,
+        age: 20,
         cause_of_death: "Eaten bu Bruce",
         movie: "Jaws",
         golden_chainsaw: false,
@@ -156,7 +129,7 @@ victims = [
     },
     {
         name: "Alex Kinter",
-        age: ,
+        age: 20,
         cause_of_death: "Eaten",
         movie: "Halloween",
         golden_chainsaw: false,
@@ -164,7 +137,7 @@ victims = [
     },
     {
         name: "Ben Gardner",
-        age: ,
+        age: 20,
         cause_of_death: "Found dead in boat",
         movie: "Jaws",
         golden_chainsaw: false,
@@ -172,7 +145,7 @@ victims = [
     },
     {
         name: "Man in Estuary",
-        age: ,
+        age: 20,
         cause_of_death: "Eaten",
         movie: "Jaws",
         golden_chainsaw: false,
@@ -180,7 +153,7 @@ victims = [
     },
     {
         name: "Quint",
-        age: ,
+        age: 20,
         cause_of_death: "Falls and gets eaten",
         movie: "Jaws",
         golden_chainsaw: true,
@@ -188,10 +161,12 @@ victims = [
     },
     {
         name: "Bruce the Shark",
-        age: ,
+        age: 20,
         cause_of_death: "Blown up by shooting oxygen tank in mouth",
         movie: "Jaws",
         golden_chainsaw: false,
         dull_machete: false,
     },
 ]
+
+module.exports = victims;

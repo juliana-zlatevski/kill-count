@@ -49,7 +49,6 @@ router.post('/', (req, res) => {
 router.get('/:victimId', (req, res) => {
     db.Victim.findById(req.params.victimId, (err, foundVictim) => {
         if (err) return console.log(err);
-        console.log(foundVictim);
         context = {victims: foundVictim}
         res.render('victims/show', context);
     })
