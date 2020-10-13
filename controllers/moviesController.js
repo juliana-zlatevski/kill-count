@@ -35,16 +35,45 @@ router.post('/', (req, res) => {
 // // show route
 router.get('/:movieId', (req, res) => {
     db.Movie.findById(
-        req.params.movieId,
-        (err, foundMovie) => {
-            if (err) return console.log(err);
-            const context = {
-                movies: foundMovie
-            }
-            res.render('movies/show', context);
-        }
+        req.params.movieId
     )
+    .populate('victims')
+    .exec((err, foundMovie) => {
+        if (err) return console.log(err);
+        const context = {
+            movies: foundMovie,
+            victims: {"foundMovie": "victims.name"}
+        }
+        console.log(foundMovie.victims);
+        res.render('movies/show', context);
+    })
 })
+
+// CURRENTLY WORKS ->
+// router.get('/:movieId', (req, res) => {
+//     db.Movie.findById(
+//         req.params.movieId,
+//         (err, foundMovie) => {
+//             if (err) return console.log(err);
+//             const context = {
+//                 movies: foundMovie
+//             }
+//             res.render('movies/show', context);
+//         }
+//     )
+// })
+
+// router.get('/:victimId', (req, res) => {
+//     db.Movie.findOne({'victims': req.params.victimId})
+//         .populate('victims')
+//         .exec((err, foundMovie) => {
+//             if (err) return console.log(err);
+//             res.render('victims/show', {
+//                 movies: foundMovie,
+//                 victims: foundMovie.victims[0]
+//             })
+//         })
+// })
 
 // // delete route
 router.delete('/:movieId', (req, res) => {
