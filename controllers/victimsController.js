@@ -39,7 +39,6 @@ router.post('/', (req, res) => {
             if (err) return console.log(err);
             foundMovie.victims.push(createdVictim);
             foundMovie.save((err, savedMovie) => {
-                console.log('saved movie' + savedMovie);
                 res.redirect('/victims');
             })
         })
@@ -48,16 +47,14 @@ router.post('/', (req, res) => {
 
 // show route
 router.get('/:victimId', (req, res) => {
-    db.Movie.findOne({'victims': req.params.victimId})
-        .populate('victims')
-        .exec((err, foundMovie) => {
-            if (err) return console.log(err);
-            res.render('victims/show', {
-                movies: foundMovie,
-                victims: foundMovie.victims[0] //this is what is causing problems -- always only referencing the very first victim in the array.
-            })
-        })
+    db.Victim.findById(req.params.victimId, (err, foundVictim) => {
+        if (err) return console.log(err);
+        console.log(foundVictim);
+        context = {victims: foundVictim}
+        res.render('victims/show', context);
+    })
 })
+
 
 // delete route
 router.delete('/:victimId', (req, res) => {
