@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
     })
 })
 
-// show route
+// SHOW ROUTE
 // router.get('/:victimId', (req, res) => {
 //     db.Victim.findById(req.params.victimId)
 //         .populate('movie')
