@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const layouts = require('express-ejs-layouts');
 const app = express();
 
 // DOTENV
@@ -19,6 +20,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 // BOOTSTRAP
 app.use(express.static(`${__dirname}/public`));
+//EXPRESS LAYOUTS
+app.use(layouts);
 
 // HOME ROUTE
 app.get('/', (req, res) => {

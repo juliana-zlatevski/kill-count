@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
     },
     director: String,
     kill_count: Number,
-    victims:[{
+    victims: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Victim'
     }]
