@@ -1,0 +1,36 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}   
+    h1 {
+        font-family: 'Nosifer', cursive;
+        color: darkred;
+    }
+.navbar {
+    font-family: 'Nosifer', cursive;
+}
+    
+    
+
+.img-fluid {
+    width: 100%;
+}
+
+
+
+footer {
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background-color: #030303;
+}
+    a {
+        color: darkred;
+    }
+    a:hover {
+        color: white;
+    }

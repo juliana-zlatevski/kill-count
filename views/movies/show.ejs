@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Details</title>
-</head>
-<body>
-    <%- include('../../partials/header') %> 
+
     <h1><%= movies.title %> Movie Info</h1>
 
     <p><b>Release Year: </b><%= movies.year %></p>
@@ -34,5 +26,3 @@
     <form action="/movies/<%= movies._id %>/edit" method="GET">
         <input type="submit" value="Edit Movie Details">
     </form>
-</body>
-</html>
