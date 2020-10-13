@@ -54,7 +54,7 @@ router.get('/:victimId', (req, res) => {
             if (err) return console.log(err);
             res.render('victims/show', {
                 movies: foundMovie,
-                victims: foundMovie.victims[0]
+                victims: foundMovie.victims[0] //this is what is causing problems -- always only referencing the very first victim in the array.
             })
         })
 })
