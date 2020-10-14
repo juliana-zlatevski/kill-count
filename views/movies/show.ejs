@@ -8,7 +8,7 @@
     <h3>Victims:</h3>
     <ol>
     <% for (let i = 0; i < movies.victims.length; i++) { %>
-        <li><a href="/victims/<%= movies.victims[i]._id %>"><%= movies.victims[i].name %></a></p></li>
+        <li><a href="/victims/<= movies.victims[i]._id %>"><%= movies.victims[i].name %></a></p></li>
     <% } %>
     </ol>
 
@@ -17,5 +17,27 @@
     </form>
 
     <form action="/movies/<%= movies._id %>/edit" method="GET">
+        <input type="submit" value="Edit Movie Details">
+    </form>
+
+
+    <h1><%= movieseed.title %> KILL COUNT</h1>
+
+    <p><b>Release Year: </b><%= movieseed.year %></p>
+    <p><b>Directed by: </b><%= movieseed.director %></p>
+    <p><b>Kill Count: </b><%= movieseed.kill_count %></p>
+
+    <h3>Victims:</h3>
+    <ol>
+    <% for (let i = 0; i < movieseed.victims.length; i++) { %>
+        <li><a href="/victims/<= movieseed.victims[i]._id %>"><%= movieseed.victims[i].name %></a></p></li>
+    <% } %>
+    </ol>
+
+    <form action="/movies/<%= movieseed._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete Movie">
+    </form>
+
+    <form action="/movies/<%= movieseed._id %>/edit" method="GET">
         <input type="submit" value="Edit Movie Details">
     </form>

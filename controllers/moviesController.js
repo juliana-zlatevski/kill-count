@@ -8,14 +8,17 @@ const db = require('../models');
 // current path = '/movies'
 // index route
 router.get('/', (req, res) => {
-    db.Movie.find({movieseed}, (err, allMovies) => {
+    db.Movie.find({})
         // const movieseed = Movie.find();
+        .populate('movieseed')
+        .exec((err, allMovies) => {
         if (err) return console.log(err);
         const context = {
             movies: allMovies,
             movieseed: movieseed
         }
         console.log(movieseed, "Hello???");
+        console.log(allMovies, "added data?");
         res.render('movies/index', context);
     })
 })
@@ -47,8 +50,9 @@ router.get('/:movieId', (req, res) => {
         const context = {
             movies: foundMovie,
             victims: {"foundMovie": "victims.name"}
-        }
+        } 
         res.render('movies/show', context);
+        console.log('movies', foundMovie);
     })
 })
 
