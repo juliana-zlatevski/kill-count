@@ -60,3 +60,7 @@ footer {
 .card-img-top {
     border-radius: 30px;
 }
+
+.btn-danger {
+    margin-bottom: 15px;
+}
