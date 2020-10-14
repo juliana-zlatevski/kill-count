@@ -44,11 +44,11 @@ router.get('/:movieId', (req, res) => {
     db.Movie.findById(
         req.params.movieId
     )
-    .populate('victims')
+    .populate('victims', 'movieseed')
     .exec((err, foundMovie) => {
         if (err) return console.log(err);
         const context = {
-            movies: foundMovie,
+            movies: [foundMovie, movieseed],
             victims: {"foundMovie": "victims.name"}
         } 
         res.render('movies/show', context);
