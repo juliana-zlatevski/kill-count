@@ -1,11 +1,18 @@
 
-    
-    <h1>Movies Index</h1>
 
-    <ul class="movies">
-        <% for (let i = 0; i < movies.length; i++) { %> 
-        <li>
-            <a href="/movies/<%= movies[i]._id %>"><%= movies[i].title %></a>
-        </li>
-    <% } %> 
-    </ul>
+ <% for (let i = 0; i < movies.length; i++) { %> 
+    <div class="card" style="width: 18rem;">
+
+            <% var randomNumber = Math.floor((Math.random() * 11) + 1); %>
+            <% var source = "/images/"+randomNumber+".jpg"; %>
+             <img src="<%=source%>" class="card-img-top" alt=""> 
+
+        <div class="card-body">
+          <h5 class="card-title"><%= movies[i].title %></h5>
+          <p class="card-text">KILL COUNT: <%= movies[i].kill_count %></p>
+          <a href="/movies/<%= movies[i]._id %>" class="btn btn-dark">See more...</a>
+        </div>
+      </div>
+      <% } %> 
+
+    

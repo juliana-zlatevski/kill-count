@@ -1,18 +1,11 @@
 
-    <h1><%= movies.title %> Movie Info</h1>
+    <h1><%= movies.title %> KILL COUNT</h1>
 
     <p><b>Release Year: </b><%= movies.year %></p>
     <p><b>Directed by: </b><%= movies.director %></p>
     <p><b>Kill Count: </b><%= movies.kill_count %></p>
-    <ul>
-        <% movies.victims.forEach((victims) => { %>
-            <a href="/movies/<%= victims._id %>"><li><%= victims.name %></li></a>
-       <% }) %>
-    </ul>
 
-
-
-    <h3>Victim List:</h3>
+    <h3>Victims:</h3>
     <ol>
     <% for (let i = 0; i < movies.victims.length; i++) { %>
         <li><a href="/victims/<%= movies.victims[i]._id %>"><%= movies.victims[i].name %></a></p></li>
