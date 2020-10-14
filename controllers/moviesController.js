@@ -4,9 +4,12 @@ const router = express.Router();
 // importing db
 const db = require('../models');
 
+
+
 // current path = '/movies'
 // index route
 router.get('/', (req, res) => {
+
     db.Movie.find({}, (err, allMovies) => {
         if (err) return console.log(err);
         const context = {
