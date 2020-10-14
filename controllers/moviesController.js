@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const movieseed = require('../models/seedMovies')
 
 // importing db
 const db = require('../models');
@@ -7,11 +8,14 @@ const db = require('../models');
 // current path = '/movies'
 // index route
 router.get('/', (req, res) => {
-    db.Movie.find({}, (err, allMovies) => {
+    db.Movie.find({movieseed}, (err, allMovies) => {
+        // const movieseed = Movie.find();
         if (err) return console.log(err);
         const context = {
-            movies: allMovies
+            movies: allMovies,
+            movieseed: movieseed
         }
+        console.log(movieseed, "Hello???");
         res.render('movies/index', context);
     })
 })
