@@ -1,0 +1,31 @@
+
+    <h1>Make Changes to <%= victims.name %></h1>
+
+    <form action="/victims/<%= victims._id %>?_method=PUT" method="POST">
+        <div>
+            <label for="name">Victim Name: </label>
+            <input type="text" name="name" value="<%= victims.name %>"/>
+        </div>
+
+        <div>
+            <label for="cause_of_death">Cause of Death: </label>
+            <input type="text" name="cause_of_death" value="<%= victims.cause_of_death %>"/>
+        </div>
+
+        <div>
+            <label for="time_killed">Time of Death: </label>
+            <input type="text" name="time_killed" value="<%= victims.time_killed %>"/>
+        </div>
+
+        <div>
+            <label for="dull_machete">Dull Machete Kill? :</label>
+            <input type="checkbox" name="dull_machete">
+        </div>
+
+        <div>
+            <label for="golden_chainsaw">Golden Chainsaw Kill? :</label>
+            <input type="checkbox" name="golden_chainsaw">
+        </div>
+
+        <input type="submit" value="Submit Changes">
+    </form>

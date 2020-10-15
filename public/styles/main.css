@@ -1,0 +1,72 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}   
+    h1 {
+        font-family: 'Nosifer', cursive;
+        color: darkred;
+    }
+.navbar {
+    font-family: 'Nosifer', cursive;
+}
+    
+    
+
+.img-fluid {
+    width: 100%;
+}
+
+
+
+footer {
+    font-family: 'Courier New', Courier, monospace;
+    position: fixed;
+    bottom: 0;
+    width: 30%;
+    /* height: 45px; */
+    /* line-height: 45px;  */
+    background-color: #030303; 
+}
+    a {
+        color: rgb(179, 62, 62);
+    }
+    a:hover {
+        color: white;
+    }
+
+.card {
+    /* border: 1px solid #333; */
+    background-color: rgb(20, 20, 20);
+    text-align: center;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.card-title {
+    /* font-family: 'Nosifer', cursive; */
+    /* margin-top: -150px; */
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.card-img-top {
+    border-radius: 30px;
+}
+
+.btn {
+    margin-bottom: 15px;
+}
+
+.jumbotron-fluid {
+    background-color: #000;
+}
