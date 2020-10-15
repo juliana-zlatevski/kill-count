@@ -1,42 +1,49 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Add a New Victim</h1>
+      <p class="lead">
 
+        <form action="/victims" method="POST">
+            <div>
+                <label for="name">Character Name:</label>
+                <input type="text" name="name">
+            </div>
+    
+            <!-- change to time died in movie -->
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" name="age">
+            </div>
+    
+            <div>
+                <label for="cause_of_death">Cause of Death:</label>
+                <input type="text" name="cause_of_death">
+            </div>
+    
+            <div>
+                <label for="dull_machete">Dull Machete Kill? :</label>
+                <input type="checkbox" name="dull_machete">
+            </div>
+    
+            <div>
+                <label for="golden_chainsaw">Golden Chainsaw Kill? :</label>
+                <input type="checkbox" name="dull_machete">
+            </div>
+            <label>Which Movie Did This Character Die In?</label><br>
+    
+            <select name="movieId">
+                <% for(let i = 0; i < movies.length; i++) { %>
+                    <option value="<%=movies[i]._id%>"><%=movies[i].title%></option>
+                <% } %>
+            </select><br/>
+            <input type="submit" value="Add Victim" class="btn btn-danger"/>
+        </form>
+
+    </div>
+  </div>
 
     
 
-    <h1>Add a New Victim</h1>
 
-    <form action="/victims" method="POST">
-        <div>
-            <label for="name">Character Name:</label>
-            <input type="text" name="name">
-        </div>
-
-        <!-- change to time died in movie -->
-        <!-- <div>
-            <label for="age">Age:</label>
-            <input type="number" name="age">
-        </div> -->
-
-        <div>
-            <label for="cause_of_death">Cause of Death:</label>
-            <input type="text" name="cause_of_death">
-        </div>
-
-        <div>
-            <label for="dull_machete">Dull Machete Kill? :</label>
-            <input type="checkbox" name="dull_machete">
-        </div>
-
-        <div>
-            <label for="golden_chainsaw">Golden Chainsaw Kill? :</label>
-            <input type="checkbox" name="dull_machete">
-        </div>
-        <label>Which Movie Did This Character Die In?</label><br>
-
-        <select name="movieId">
-            <% for(let i = 0; i < movies.length; i++) { %>
-                <option value="<%=movies[i]._id%>"><%=movies[i].title%></option>
-            <% } %>
-        </select><br/>
-        <input type="submit" value="Add Victim"/>
-    </form>
+  
 

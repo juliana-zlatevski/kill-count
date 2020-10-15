@@ -1,27 +1,33 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Add a New Movie</h1>
+      <p class="lead">
 
+        <form action="/movies" method="POST">
+            <div>
+                <label for="title">Movie Title:</label>
+                <input type="text" name="title">
+            </div>
     
-    <h1>Add a New Movie</h1>
+            <div>
+                <label for="year">Release Year:</label>
+                <input type="number" name="year">
+            </div>
+    
+            <div>
+                <label for="director">Directed By:</label>
+                <input type="text" name="director">
+            </div>
+    
+            <div>
+                <label for="kill_count">Kill Count:</label>
+                <input type="number" name="kill_count">
+            </div>
+    
+            <input type="submit" value="Add movie" class="btn btn-danger"/>
+        </form>
 
-    <form action="/movies" method="POST">
-        <div>
-            <label for="title">Movie Title:</label>
-            <input type="text" name="title">
-        </div>
 
-        <div>
-            <label for="year">Release Year:</label>
-            <input type="number" name="year">
-        </div>
-
-        <div>
-            <label for="director">Directed By:</label>
-            <input type="text" name="director">
-        </div>
-
-        <div>
-            <label for="kill_count">Kill Count:</label>
-            <input type="number" name="kill_count">
-        </div>
-
-        <input type="submit" value="Add movie"/>
-    </form>
+    </div>
+  </div>
+    

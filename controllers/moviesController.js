@@ -8,8 +8,8 @@ const db = require('../models');
 // current path = '/movies'
 // index route
 router.get('/', (req, res) => {
+    // const movieseed = Movie.find();
     db.Movie.find({})
-        // const movieseed = Movie.find();
         .populate('movieseed')
         .exec((err, allMovies) => {
         if (err) return console.log(err);
@@ -41,15 +41,13 @@ router.post('/', (req, res) => {
 
 // // show route
 router.get('/:movieId', (req, res) => {
-    db.Movie.findById(
-        req.params.movieId
-    )
-    .populate('victims', 'movieseed')
+    db.Movie.findById(req.params.movieId)
+    .populate('victims')
     .exec((err, foundMovie) => {
         if (err) return console.log(err);
         const context = {
-            movies: [foundMovie, movieseed],
-            victims: {"foundMovie": "victims.name"}
+            movies: foundMovie, 
+            victims: {"foundMovie": "victims.name"},
         } 
         res.render('movies/show', context);
         console.log('movies', foundMovie);

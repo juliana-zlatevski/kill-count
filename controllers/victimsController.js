@@ -48,11 +48,17 @@ router.post('/', (req, res) => {
 
 // SHOW ROUTE
 router.get('/:victimId', (req, res) => {
-    db.Victim.findById(req.params.victimId, (err, foundVictim) => {
-        if (err) return console.log(err);
-        context = {victims: foundVictim}
-        res.render('victims/show', context);
-    })
+    db.Victim.findById(req.params.victimId)
+        .populate('moives')
+        .exec((err, foundVictim) => {
+            if (err) return console.log(err);
+            const context = {
+                victims: foundVictim,
+                movies: {"foundVicitm": "movies.title"}
+            }
+            res.render('victims/show', context);
+            // console.log('victims', foundVictims);
+        })
 })
 
 

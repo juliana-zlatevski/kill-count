@@ -18,6 +18,5 @@ mongoose.connect(process.env.MONGODB_URI, {
   module.exports = {
       Movie: require('./Movie'),
       Victim: require('./Victim'),
-      movieseed: require('./seedMovies'),
-      victimseed: require('./seedVictims')
+      User: require('./User'),
   }
