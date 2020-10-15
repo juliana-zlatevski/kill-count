@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
   });
   mongoose.connection.on('connected', () => {
-    console.log('SEED DATA MONGO');
+    console.log('SEED DATA MONGO: ADDING MOVIES');
   });
 
   mongoose.connection.on('error', (err) => {
