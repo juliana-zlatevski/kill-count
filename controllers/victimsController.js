@@ -49,13 +49,14 @@ router.post('/', (req, res) => {
 // SHOW ROUTE
 router.get('/:victimId', (req, res) => {
     db.Victim.findById(req.params.victimId)
-        .populate('moives')
+        .populate('movies')
         .exec((err, foundVictim) => {
             if (err) return console.log(err);
             const context = {
                 victims: foundVictim,
-                movies: {"foundVicitm": "movies.title"}
+                movies: {"foundVictim": "movies.title"}
             }
+            // console.log(movies);
             res.render('victims/show', context);
             // console.log('victims', foundVictims);
         })

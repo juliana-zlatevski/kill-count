@@ -11,7 +11,7 @@
         <h3>Victims:</h3>
         <ol>
         <% for (let i = 0; i < movies.victims.length; i++) { %>
-            <li><a href="/victims/<= movies.victims[i]._id %>"><%= movies.victims[i].name %></a></p></li>
+            <li><a href="/victims/<%= movies.victims[i]._id %>"><%= movies.victims[i].name %></a></p></li>
         <% } %>
         </ol>
 
