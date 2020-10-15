@@ -1,25 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const movieseed = require('../models/seedMovies')
+
 
 // importing db
 const db = require('../models');
 
 // current path = '/movies'
 // index route
+
 router.get('/', (req, res) => {
-    // const movieseed = Movie.find();
-    db.Movie.find({})
-        .populate('movieseed')
-        .exec((err, allMovies) => {
-        if (err) return console.log(err);
-        const context = {
-            movies: allMovies,
-            movieseed: movieseed
-        }
-        console.log(movieseed, "Hello???");
-        console.log(allMovies, "added data?");
-        res.render('movies/index', context);
+    db.Movie.find({}, (err,allMovies)=> {
+        if(err) return console.log(err),
+        console.log(allMovies);
+        res.render('movies/index', {movies:allMovies})
     })
 })
 

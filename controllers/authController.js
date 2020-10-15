@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const router = express.Router();
 
 const db = require('../models');
-const { lastIndexOf } = require('../models/seedMovies');
 
 // current path /auth
 
@@ -11,33 +10,47 @@ const { lastIndexOf } = require('../models/seedMovies');
 //get register
 router.get('/register', (req, res) => {
     res.render('auth/register');
+    // console.log("register route");
 });
 
 //------post auth (new user)
 router.post('/', (req, res) => {
-    db.User.findOne({email: req.body.email}, (err, user) => {
-        if(err) {console.log(err)};
-        if(user) {
-            alert('User already exists, please sing up or log into your account');
+    db.User.findOne({email: req.body.passord}, (err, user) =>{
+        if (err) return console.log(err);
+
+        if (user) {
+            console.log("user w/ that email already exists, please log in or sign up");
             return res.redirect('/auth/register');
         }
-        bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
-            if(err) {console.log('Error hashing password')};
-            const newUser = {
-                name: req.body.name,
-                email: req.body.email,
-                password: hashedPassword
-            }
-            db.User.create(newUser, (err, newUser) => {
-                if(err) {console.log(err)};
-                res.redirect('/auth/login');
-            })
-        })
+        //create new user, but not without scrambling pw first
+        bcrypt.genSalt(10, (err, salt) => {
+            if (err) return console.log("error making salt");//not used in production, this is just to check if it works during development
+
+            bcrypt.hash(req.body.password, salt, (err, hashedPw) => {
+                if (err) return console.log('error hashing password');
+        // new user with hashed password
+                const newUser = {
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: hashedPw
+                }
+
+                db.User.create(newUser, (err, createUser) => {
+                    if (err) return console.log(err);
+                    res.redirect('/auth/login')
+                });
+            });
+        });
     });
 });
 
 //-------login
+router.get('/login', (req, res) => {
+    res.render('auth/login');
+})
+
 router.post('/login', (req, res) => {
+    console.log('trying to log in');  
     db.User.findOne({email: req.body.email}, (err, user) => {
         if(err) {console.log(err)};
         if (!user) {
@@ -48,7 +61,7 @@ router.post('/login', (req, res) => {
             if(err) {console.log("passwords not a match")};
             if (matchPw) {
                 req.session.currentUser = user._id;
-                res.redirect('/movies')
+                res.redirect('/movies') //after successful login
             }
         })
     })

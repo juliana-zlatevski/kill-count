@@ -3,7 +3,7 @@
  <% for (let i = 0; i < movies.length; i++) { %> 
     <div class="card" style="width: 18rem;">
 
-            <% var randomNumber = Math.floor((Math.random() * 11) + 1); %>
+            <% var randomNumber = Math.floor((Math.random() * 10) + 1); %>
             <% var source = "/images/"+randomNumber+".jpg"; %>
              <img src="<%=source%>" class="card-img-top" alt=""> 
 
@@ -15,22 +15,4 @@
       </div>
       <% } %> 
       
-      <!-- seeded data??? -->
-      <% for (let i = 0; i < movieseed.length; i++) { %> 
-        <div class="card" style="width: 18rem;">
-          
-          <% var randomNumber = Math.floor((Math.random() * 11) + 1); %>
-          <% var source = "/images/"+randomNumber+".jpg"; %>
-          <img src="<%=source%>" class="card-img-top" alt=""> 
-          
-          <div class="card-body">
-            <h5 class="card-title"><%= movieseed[i].title %></h5>
-            <p class="card-text">KILL COUNT: <%= movieseed[i].kill_count %></p>
-            <a href="/movies/<%= movieseed[i]._id %>" class="btn btn-dark">See more...</a>
-          </div>
-        </div>
-        <% } %> 
-        
-        
-      </div>
-  </div>
+    

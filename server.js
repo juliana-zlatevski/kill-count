@@ -2,23 +2,25 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const morgan = require('morgan');
 const layouts = require('express-ejs-layouts');
 const session = require('express-session');
-const app = express();
 
 // DOTENV
 require('dotenv').config();
+const app = express();
 const PORT = process.env.PORT || 4000;
 
 // VIEW ENGINE
 app.set('view engine', 'ejs');
 
 // CONTROLLERS
-const controller = require('./controllers');
+const ctrl = require('./controllers');
 
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
+app.use(morgan(':method :url'))
 // BOOTSTRAP
 app.use(express.static(`${__dirname}/public`));
 //EXPRESS LAYOUTS
@@ -40,13 +42,13 @@ app.get('/', (req, res) => {
 })
 
 // MOVIES ROUTES
-app.use('/movies', controller.movies);
+app.use('/movies', ctrl.movies);
 
 // VICTIMS ROUTES
-app.use('/victims', controller.victims);
+app.use('/victims', ctrl.victims);
 
 // USER ROUTES
-app.use('/users', controller.users)
+app.use('/auth', ctrl.auth)
 
 // LISTENER
 app.listen(PORT, ()=> console.log(`server connected on port: ${PORT}`));

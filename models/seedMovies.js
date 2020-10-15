@@ -1,5 +1,6 @@
 const Movie = require('./Movie');
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 
 mongoose.connect(process.env.MONGODB_URI, {
@@ -9,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
   });
   mongoose.connection.on('connected', () => {
-    console.log('MongoDB connected successfully...');
+    console.log('SEED DATA MONGO');
   });
 
   mongoose.connection.on('error', (err) => {
@@ -59,5 +60,6 @@ function runSeed() {
     };
 }
 
+// runSeed();
 
 module.exports = movieseed;

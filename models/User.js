@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        minlength: 4
+        // minlength:
     }
 }, {timestapms: true})
 
