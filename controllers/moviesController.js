@@ -43,7 +43,7 @@ router.get('/:movieId', (req, res) => {
             victims: {"foundMovie": "victims.name"},
         } 
         res.render('movies/show', context);
-        console.log('movies', foundMovie);
+        console.log('movies', req.params.movieId);
     })
 })
 

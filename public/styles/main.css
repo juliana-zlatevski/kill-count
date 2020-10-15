@@ -64,3 +64,11 @@ footer {
 .btn-danger {
     margin-bottom: 15px;
 }
+
+
+.jumbotron-fluid {
+    background-color: rgb(20, 20, 20);
+}
+    a {
+        color: red;
+    }

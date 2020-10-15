@@ -11,9 +11,9 @@
                 <% if (victims.dull_machete) { %> Yes lol <% } else { %> Nope! <% } %> 
                 </p>
 
-                <b>Time Of Death: </b><%= victims.time_killed %><br>
+                <b>Time Of Death: </b><%= victims.time_killed %> minutes in<br>
 
-        <b>Movie: </b><a href="/movies/<%= movies._id %>"><%= movies.name %></a>
+        
 
         <form action="/victims/<%= victims._id %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete Victim" class="btn btn-danger">
