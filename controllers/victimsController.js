@@ -1,16 +1,15 @@
 const express = require('express');
-const { Movie } = require('../models');
 const router = express.Router();
 
 // importing DB
 const db = require('../models');
-const { find } = require('../models/Movie');
 
 
 // current path = 'victims'
 // index route
 router.get('/', (req, res) => {
     db.Victim.find({}, (err, allVictims) => {
+        console.log(allVictims);
         const context = {
             victims: allVictims
         }
