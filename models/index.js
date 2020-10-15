@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -18,4 +19,5 @@ mongoose.connect(process.env.MONGODB_URI, {
   module.exports = {
       Movie: require('./Movie'),
       Victim: require('./Victim'),
+      User: require('./User'),
   }

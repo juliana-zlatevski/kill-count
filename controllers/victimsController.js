@@ -1,16 +1,15 @@
 const express = require('express');
-const { Movie } = require('../models');
 const router = express.Router();
 
 // importing DB
 const db = require('../models');
-const { find } = require('../models/Movie');
 
 
 // current path = 'victims'
 // index route
 router.get('/', (req, res) => {
     db.Victim.find({}, (err, allVictims) => {
+        console.log(allVictims);
         const context = {
             victims: allVictims
         }
@@ -48,11 +47,18 @@ router.post('/', (req, res) => {
 
 // SHOW ROUTE
 router.get('/:victimId', (req, res) => {
-    db.Victim.findById(req.params.victimId, (err, foundVictim) => {
-        if (err) return console.log(err);
-        context = {victims: foundVictim}
-        res.render('victims/show', context);
-    })
+    db.Victim.findById(req.params.victimId)
+        .populate('movies')
+        .exec((err, foundVictim) => {
+            if (err) return console.log(err);
+            const context = {
+                victims: foundVictim,
+                movies: {"foundVictim": "movies.title"}
+            }
+            // console.log(movies);
+            res.render('victims/show', context);
+            // console.log('victims', foundVictims);
+        })
 })
 
 

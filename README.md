@@ -21,14 +21,17 @@ Kill Count app is a visual representation of the Dead Meat YouTube channel's Kil
 
 The landing page will greet the user and will include a nav bar with links to the movie index, the victim index, as well as links to add their own movies/victim profiles to the app.
 
-When a user clicks on a specific movie, they will be taken to that movie's page with more details about the movie, as well as victim "profiles". The victim profiles will display info including the character name, (actor name or age - tbd), cause of death, and whether they had the most boring death, or the most interesting death from the movie.
+When a user clicks on a specific movie, they will be taken to that movie's page with more details about the movie, as well as victim "profiles". The victim profiles will display info including the character name, time of death, cause of death, and whether they had the most boring death, or the most interesting death from the movie.
 
 Users will be able to edit existing movies or victims. They will also be able to add movie listings that are not already included in the index.
 
 ## Wireframes
 
-![Welcome Page]()
-![Movies Index]()
+![Welcome Page](./public/images/sample-landing-page.png)
+![Movies Index](./public/images/sample-movie-index.png)
+![Movie Show Page](./public/images/sample-movie-page.png)
+![Sample Add Page](./public/images/sample-new-page.png)
+![Model Relationships](./public/images/Models.png)
 
 ## Unsolved/To Do
 
