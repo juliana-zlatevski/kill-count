@@ -18,11 +18,18 @@ router.get('/', (req, res) => {
 
 // new route
 router.get('/new', (req, res) => {
+    if (!req.session.currentUser){
+        return res.redirect('/auth/login')
+    }
     res.render('movies/new');
 })
 
 // // create + post route
 router.post('/', (req, res) => {
+    if(!req.session.currentUser){
+        return res.redirect('/auth/login')
+    }
+    req.body.user = req.session.currentUser
     db.Movie.create(req.body, (err, createdMovie) => {
         if (err) return console.log(err);
         const context = {
@@ -32,7 +39,7 @@ router.post('/', (req, res) => {
     })
 })
 
-// // show route
+// show route
 router.get('/:movieId', (req, res) => {
     db.Movie.findById(req.params.movieId)
     .populate('victims')
@@ -43,12 +50,15 @@ router.get('/:movieId', (req, res) => {
             victims: {"foundMovie": "victims.name"},
         } 
         res.render('movies/show', context);
-        console.log('movies', foundMovie);
+        console.log('movies', req.params.movieId);
     })
 })
 
 // // delete route
 router.delete('/:movieId', (req, res) => {
+    if(!req.session.currentUser){
+        return res.redirect('/auth/login')
+    }
     db.Movie.findByIdAndDelete(
         req.params.movieId,
         (err, deletedMovie) => {

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+    <% for (let i = 0; i < victims.length; i++) { %> 
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= victims[i].name %></h5>
+          <p class="card-text">
+    
+            <% if (victims[i].golden_chainsaw === true) { %> <a href="/victims/<%=victims[i]._id%>"></a><%= victims[i].name> <% } %> 
+    
+            <% if (victims[i].dull_machete === true) { %> <a href="/victims/<%=victims[i]._id%>"></a><%= victims[i].name> 
+            <% } %> 
+    
+          </p>
+        </div>
+      </div>
+      <% } %> 
+    </div>
+    </div>

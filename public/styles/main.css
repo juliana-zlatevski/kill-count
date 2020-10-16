@@ -6,11 +6,15 @@ body {
     h1 {
         font-family: 'Nosifer', cursive;
         color: darkred;
+        padding: 10px;
     }
 .navbar {
     font-family: 'Nosifer', cursive;
 }
-    
+    .nav-item {
+        padding-top: 15px;
+    }
+   
     
 
 .img-fluid {
@@ -70,3 +74,7 @@ footer {
 .jumbotron-fluid {
     background-color: #000;
 }
+    a {
+        color: red;
+    }
+

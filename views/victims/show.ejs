@@ -1,4 +1,5 @@
-<div class="card" style="width: 30rem;">
+
+<div class="card" style="width: 20rem;">
     <img src="" class="card-img-top">
     <div class="card-body">
       <h5 class="card-title"><%= victims.name %></h5>
@@ -16,7 +17,9 @@
 
         <br><b>Time Of Death: </b><%= victims.time_killed %><br>
 
-        <b>Movie: </b><a href="/movies/<%= movies._id %>"><%= movies.name %></a>
+        <!-- <b>Movie: </b><= movie._id.title %></a> -->
+
+        
 
         <form action="/victims/<%= victims._id %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete Victim" class="btn btn-danger">

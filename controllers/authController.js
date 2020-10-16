@@ -10,7 +10,6 @@ const db = require('../models');
 //get register
 router.get('/register', (req, res) => {
     res.render('auth/register');
-    // console.log("register route");
 });
 
 //------post auth (new user)
@@ -50,7 +49,6 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-    console.log('trying to log in');  
     db.User.findOne({email: req.body.email}, (err, user) => {
         if(err) {console.log(err)};
         if (!user) {
@@ -58,7 +56,7 @@ router.post('/login', (req, res) => {
             return res.redirect('/auth/login')
         }
         bcrypt.compare(req.body.password, user.password, (err, matchPw) => {
-            if(err) {console.log("passwords not a match")};
+            if(err) {console.log("Passwords do not match")};
             if (matchPw) {
                 req.session.currentUser = user._id;
                 res.redirect('/movies') //after successful login
@@ -67,15 +65,14 @@ router.post('/login', (req, res) => {
     })
 })
 
-//-----logout
+// Log out
 router.delete('/login', (req, res) => {
     if (req.session.currentUser) {
-        req.session.destroy((err) => {
-            if(err) return console.log('failed to end session');
-
-            res.redirect('/auth/login')
-        })
+      req.session.destroy((err) => {
+        if (err) return console.log('Error destroying session');
+        res.redirect('/auth/login');
+      });
     }
-});
+  });
 
 module.exports = router;

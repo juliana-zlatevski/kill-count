@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require('../models');
 
 
-// current path = 'victims'
+// current path = '/victims'
 // index route
 router.get('/', (req, res) => {
     db.Victim.find({}, (err, allVictims) => {
@@ -19,6 +19,9 @@ router.get('/', (req, res) => {
 
 // new route
 router.get('/new', (req, res) => {
+    if(!req.session.currentUser){
+        return res.redirect('/auth/login')
+    }
     db.Movie.find({}, (err, allMovies) => {
         if (err) return console.log(err);
         res.render('victims/new', {
@@ -62,8 +65,13 @@ router.get('/:victimId', (req, res) => {
 })
 
 
+
+
 // delete route
 router.delete('/:victimId', (req, res) => {
+    if(!req.session.currentUser){
+        return res.redirect('/auth/login')
+    }
     db.Victim.findByIdAndDelete(
         req.params.victimId,
         (err, deletedVictim) => {
@@ -103,5 +111,6 @@ router.put('/:victimId', (req, res) => {
         }
     )
 })
+
 
 module.exports = router;

@@ -29,12 +29,12 @@ app.use(layouts);
 //express session
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    resave: false,
+    resave: false, // Only save the session if a property changes
     saveUninitialized: false,
     cookie: {
-        maxAge: 1000*60*60*24
+      maxAge: 1000 * 60 * 60 * 24 * 3
     }
-}));
+  }));
 
 // HOME ROUTE
 app.get('/', (req, res) => {
