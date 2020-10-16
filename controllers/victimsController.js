@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require('../models');
 
 
-// current path = 'victims'
+// current path = '/victims'
 // index route
 router.get('/', (req, res) => {
     db.Victim.find({}, (err, allVictims) => {
@@ -65,6 +65,8 @@ router.get('/:victimId', (req, res) => {
 })
 
 
+
+
 // delete route
 router.delete('/:victimId', (req, res) => {
     if(!req.session.currentUser){
@@ -109,5 +111,6 @@ router.put('/:victimId', (req, res) => {
         }
     )
 })
+
 
 module.exports = router;

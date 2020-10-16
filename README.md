@@ -14,9 +14,11 @@ Kill Count app is a visual representation of the Dead Meat YouTube channel's Kil
 
 5. Write a route that will take user to a specific movie's detail page. Include victim/kill count info for that movie on this page as well. This page will include edit and delete buttons. Users can delete info right from this page.
 
-5. Create a page where users can edit information about existing movies/victims, create a route that renders current info into forms. Users can edit and submit changes from this page.
+6. Create a page where users can edit information about existing movies/victims, create a route that renders current info into forms. Users can edit and submit changes from this page.
 
-6. Create a page where users can add new movies, allowing the option to also add victims at the same time if they choose to. 
+7. Create a page where users can add new movies and victims as long as they are signed into the site. 
+
+
 
 
 The landing page will greet the user and will include a nav bar with links to the movie index, the victim index, as well as links to add their own movies/victim profiles to the app.
@@ -40,4 +42,4 @@ Users will be able to edit existing movies or victims. They will also be able to
 3. Adding the ability for users to upload their own pictures.
 
 ## Technologies Used
-HTML, CSS, JS, jQuery, Mongoose, EJS, Express, MongoDB, 
+HTML, CSS, JS, jQuery, Mongoose, EJS, Express (sessions, layouts), MongoDB, bcryptjs, Bootstrap
