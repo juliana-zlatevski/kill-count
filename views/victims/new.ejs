@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-fluid bg-dark">
+<div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Add a New Victim</h1>
       <p class="lead">
@@ -28,13 +28,16 @@
                 <label for="golden_chainsaw">Golden Chainsaw Kill? :</label>
                 <input type="checkbox" name="dull_machete">
             </div>
-            <label>Which Movie Did This Character Die In?</label><br>
-    
-            <select name="movieId">
+            <!-- <label>Which Movie Did This Character Die In?</label><br> -->
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Which Movie Did This Character Die In?</label>
+            </div>
+            <select multiple class="form-control" id="exampleFormControlSelect2" name="movieId">
                 <% for(let i = 0; i < movies.length; i++) { %>
                     <option value="<%=movies[i]._id%>"><%=movies[i].title%></option>
                 <% } %>
-            </select><br/>
+            </select>
+            <br/>
             <input type="submit" value="Add Victim" class="btn btn-danger"/>
         </form>
 

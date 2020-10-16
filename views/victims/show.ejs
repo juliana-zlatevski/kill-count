@@ -4,14 +4,19 @@
       <h5 class="card-title"><%= victims.name %></h5>
       <p class="card-text">
 
-        <b>Cause of Death: </b><%= victims.cause_of_death %><br>
-        <br><b>Coolest Death? </b></br>
-            <% if (victims.golden_chainsaw) { %> Yes! <% } else { %> Nah :/ <% } %> 
-        <br><br><b>Lamest Death?</b> </br>
-                <% if (victims.dull_machete) { %> Yes lol <% } else { %> Nope! <% } %> 
-                </p>
+        <b>Cause of Death: </b><%= victims.cause_of_death %><br><br>
 
-                <b>Time Of Death: </b><%= victims.time_killed %> minutes in<br>
+        <% if (victims.golden_chainsaw === true) { %> <img src="/logos/The_Golden_Chainsaw.png" width="125px">
+        <br><br><b>Awarded Golden Chainsaw Recipient for Coolest Death</b>
+        <% } %> 
+
+        <% if (victims.dull_machete === true) { %> <img src="/logos/The_Dull_Machete.png" width="125px"> 
+        <br><br><b>Awarded Dull Machete Recipient for Lamest Death</b><br>
+        <% } %> 
+
+        <br><b>Time Of Death: </b><%= victims.time_killed %><br>
+
+        <!-- <b>Movie: </b><= movie._id.title %></a> -->
 
         
 

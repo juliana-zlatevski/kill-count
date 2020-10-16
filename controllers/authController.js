@@ -10,7 +10,6 @@ const db = require('../models');
 //get register
 router.get('/register', (req, res) => {
     res.render('auth/register');
-    // console.log("register route");
 });
 
 //------post auth (new user)
@@ -66,15 +65,14 @@ router.post('/login', (req, res) => {
     })
 })
 
-//-----logout
-router.delete('/auth/logout', (req, res) => {
+// Log out
+router.delete('/login', (req, res) => {
     if (req.session.currentUser) {
-        req.session.destroy((err) => {
-            if(err) return console.log('failed to end session');
-
-            res.redirect('index')
-        })
+      req.session.destroy((err) => {
+        if (err) return console.log('Error destroying session');
+        res.redirect('/auth/login');
+      });
     }
-});
+  });
 
 module.exports = router;

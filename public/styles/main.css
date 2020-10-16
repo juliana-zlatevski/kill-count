@@ -6,11 +6,15 @@ body {
     h1 {
         font-family: 'Nosifer', cursive;
         color: darkred;
+        padding: 10px;
     }
 .navbar {
     font-family: 'Nosifer', cursive;
 }
-    
+    .nav-item {
+        padding-top: 15px;
+    }
+   
     
 
 .img-fluid {
@@ -29,7 +33,7 @@ footer {
     background-color: #030303; 
 }
     a {
-        color: darkred;
+        color: rgb(179, 62, 62);
     }
     a:hover {
         color: white;
@@ -52,22 +56,23 @@ footer {
 }
 
 .card-title {
-    font-family: 'Nosifer', cursive;
+    /* font-family: 'Nosifer', cursive; */
     /* margin-top: -150px; */
-    font-size: 30px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 .card-img-top {
     border-radius: 30px;
 }
 
-.btn-danger {
+.btn {
     margin-bottom: 15px;
 }
 
-
 .jumbotron-fluid {
-    background-color: rgb(20, 20, 20);
+    background-color: #000;
 }
     a {
         color: red;
